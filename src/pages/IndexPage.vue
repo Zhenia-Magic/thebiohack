@@ -1,49 +1,112 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <example-component
-      title="Example component"
-      active
-      :todos="todos"
-      :meta="meta"
-    ></example-component>
+  <q-page class="window-height">
+    <div class="row q-pa-none" style="height: 100vh; padding-top: 53px;
+    padding-bottom: 0">
+      <div class="col-8 bg-secondary">
+        <div class="bg-primary q-ma-md q-pa-md" style="border-radius: 1em">
+          <h4 class="text-accent" style="font-size: 1.5em;
+          font-weight: bold; text-align: center">
+            ARTICLE'S TITLE
+          </h4>
+          <div class="article">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab accusamus
+            aperiam aspernatur debitis dicta dolor eius eveniet fuga hic in minima
+            molestias omnis provident quam quod, repellat, sunt vero.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab accusamus
+            aperiam aspernatur debitis dicta dolor eius eveniet fuga hic in minima
+            molestias omnis provident quam quod, repellat, sunt vero.
+            <br><br>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab accusamus
+            aperiam aspernatur debitis dicta dolor eius eveniet fuga hic in minima
+            molestias omnis provident quam quod, repellat, sunt vero.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab accusamus
+            aperiam aspernatur debitis dicta dolor eius eveniet fuga hic in minima
+            molestias omnis provident quam quod, repellat, sunt vero.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab accusamus
+            aperiam aspernatur debitis dicta dolor eius eveniet fuga hic in minima
+            molestias omnis provident quam quod, repellat, sunt vero.
+            <br><br>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab accusamus
+            aperiam aspernatur debitis dicta dolor eius eveniet fuga hic in minima
+            molestias omnis provident quam quod, repellat, sunt vero.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab accusamus
+            aperiam aspernatur debitis dicta dolor eius eveniet fuga hic in minima
+            molestias omnis provident quam quod, repellat, sunt vero.Lorem ipsum dolor
+            sit amet, consectetur adipisicing elit. A ab accusamus
+            aperiam aspernatur debitis dicta dolor eius eveniet fuga hic in minima
+            molestias omnis provident quam quod, repellat, sunt vero.
+            <br><br>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab accusamus
+            aperiam aspernatur debitis dicta dolor eius eveniet fuga hic in minima
+            molestias omnis provident quam quod, repellat, sunt vero.
+          </div>
+        </div>
+      </div>
+      <div class="col-4 bg-secondary">
+        <div class="bg-primary q-ma-md q-pa-md" style="border-radius: 1em">
+          <h5 class="text-accent" style="font-size: 1.5em;
+          font-weight: bold; text-align: center">
+            CONTENTS
+          </h5>
+          <q-list class>
+            <q-item clickable v-ripple class="content-item">
+              <q-item-section>Sleep</q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple class="content-item">
+              <q-item-section>
+                <q-item-label>Nutrition</q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple class="content-item">
+              <q-item-section>
+                <q-item-label>Work</q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple class="content-item">
+              <q-item-section>
+                <q-item-label>Exercise</q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple class="content-item">
+              <q-item-section>
+                <q-item-label>Brain</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </div>
+      </div>
+    </div>
   </q-page>
 </template>
 
 <script lang="ts">
-import { Todo, Meta } from 'components/models';
-import ExampleComponent from 'components/ExampleComponent.vue';
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'IndexPage',
-  components: { ExampleComponent },
-  setup() {
-    const todos = ref<Todo[]>([
-      {
-        id: 1,
-        content: 'ct1',
-      },
-      {
-        id: 2,
-        content: 'ct2',
-      },
-      {
-        id: 3,
-        content: 'ct3',
-      },
-      {
-        id: 4,
-        content: 'ct4',
-      },
-      {
-        id: 5,
-        content: 'ct5',
-      },
-    ]);
-    const meta = ref<Meta>({
-      totalCount: 1200,
-    });
-    return { todos, meta };
-  },
 });
 </script>
+
+<style lang="scss">
+.content-item {
+  background-color: #904c77ff;
+  padding: 1em;
+  margin: 1em 0em;
+  border-radius: 1em;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.article {
+  margin: 0em 3em;
+  font-size: 1.3rem;
+  text-align: justify;
+}
+
+</style>
