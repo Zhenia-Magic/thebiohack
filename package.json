@@ -4,6 +4,7 @@
   "description": "Biohacking portal",
   "productName": "The Biohack",
   "author": "Evgeniia Buzulukova (evgeniia.buz@gmail.com)",
+
   "private": true,
   "scripts": {
     "dev": "quasar dev",

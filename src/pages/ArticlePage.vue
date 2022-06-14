@@ -1,12 +1,11 @@
 <template>
-  <q-page class="window-height">
-    <div class="row q-pa-none" style="height: 100vh; padding-top: 53px;
-    padding-bottom: 0">
+  <q-page class="bg-secondary">
+    <div class="content row q-pa-none" style="padding-top: 5%">
       <div class="col-8 bg-secondary">
-        <div class="bg-primary q-ma-md q-pa-md" style="border-radius: 1em">
+        <div class="q-pa-md" style="border-radius: 1em">
           <h4 class="text-accent" style="font-size: 1.5em;
           font-weight: bold; text-align: center">
-            ARTICLE'S TITLE
+            {{ $route.params.articleID }}
           </h4>
           <div class="article">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab accusamus
@@ -43,10 +42,10 @@
         </div>
       </div>
       <div class="col-4 bg-secondary">
-        <div class="bg-primary q-ma-md q-pa-md" style="border-radius: 1em">
+        <div class=" q-ma-md q-pa-md" style="border-radius: 1em">
           <h5 class="text-accent" style="font-size: 1.5em;
           font-weight: bold; text-align: center">
-            CONTENTS
+            Contents
           </h5>
           <q-list class>
             <q-item clickable v-ripple class="content-item">
@@ -87,11 +86,16 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'IndexPage',
+  name: 'ArticlePage',
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+
+.content {
+
+}
+
 .content-item {
   background-color: #904c77ff;
   padding: 1em;
@@ -105,7 +109,7 @@ export default defineComponent({
 
 .article {
   margin: 0em 3em;
-  font-size: 1.3rem;
+  font-size: 1rem;
   text-align: justify;
 }
 

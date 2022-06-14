@@ -1,10 +1,15 @@
 import { RouteRecordRaw } from 'vue-router';
+import MainLayout from 'src/layouts/MainLayout.vue';
+import ArticlePage from 'src/pages/ArticlePage.vue';
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
+    component: MainLayout,
+    children: [{
+      path: 'article/:articleID',
+      component: ArticlePage,
+    }],
   },
 
   // Always leave this as last one,

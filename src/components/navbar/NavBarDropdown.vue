@@ -28,4 +28,7 @@
   </q-btn-dropdown>
 </template>
 
-
+<script>
+export default {
+};
+</script>
