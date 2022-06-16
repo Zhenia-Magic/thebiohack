@@ -30,6 +30,11 @@ export default {
   color: var(--q-dark)
 }
 
+.icon:hover {
+  transform: scale(1.1);
+  color: var(--q-accent)
+}
+
 .social-icons {
   margin: auto;
 }

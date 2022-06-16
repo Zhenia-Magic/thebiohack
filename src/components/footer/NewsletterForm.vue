@@ -1,7 +1,7 @@
 <template>
   <q-form
     @submit="onSubmit"
-    class="column form justify-stretch content-stretch">
+    class="column form">
     <h6>Subscribe to Newsletter</h6>
     <q-input
       bg-color="white"
@@ -10,7 +10,8 @@
       rounded
       outlined
       v-model="email"
-      type="email">
+      type="email"
+      class="margin-auto">
     </q-input>
     <div class="row names no-wrap">
       <q-input
@@ -64,7 +65,7 @@ export default {
 <style scoped>
 
 .names {
-  margin: 1.7em auto auto auto
+  margin-top: 1.7em;
 }
 
 .name-second {
@@ -77,6 +78,7 @@ export default {
 
 .form {
   padding: 2rem 0 2rem 0;
+  flex-basis: 23rem;
 }
 
 h6 {

@@ -1,7 +1,7 @@
 <template>
   <div class="menu">
     <h6>Resources</h6>
-    <div>
+    <div class="flex column menu-items">
       <p>Home</p>
       <p>About</p>
       <p>Contact Us</p>
@@ -12,10 +12,9 @@
 </template>
 
 <script>
-import SocialIcons from './SocialIcons.vue';
 
 export default {
-  name: 'MenuWithIcons',
+  name: 'SiteMenu',
 };
 </script>
 
@@ -30,4 +29,20 @@ h6 {
   padding: 2rem 0 2rem 0;
 }
 
+p {
+  margin: 0;
+  color: var(--q-dark);
+  max-width: 30%;
+}
+
+p:hover {
+  font-weight: 600;
+}
+
+.menu-items {
+  height: 80%;
+  justify-content: space-between;
+  font-size: 1.15em;
+  font-weight: 500;
+}
 </style>

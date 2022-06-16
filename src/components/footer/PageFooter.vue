@@ -2,10 +2,10 @@
   <footer>
     <div class="footer shadow-up-2">
       <div class="row justify-center items-stretch reverse-wrap">
-        <menu-with-icons
-          class="col-xs-auto col-sm-4 col-md-4 col-lg-3 col-xl-2"/>
+        <site-menu
+          class="col-xs-4 col-sm-4 col-md-4 col-lg-3 col-xl-2"/>
         <newsletter-form
-          class="col-xs-10 col-sm-6 col-md-4 col-lg-3 col-xl-auto"/>
+          class="col-xs-10 col-sm-6 col-md-6 col-lg-3 col-xl-auto"/>
       </div>
       <social-icons/>
     </div>
@@ -14,18 +14,18 @@
 
 <script>
 import NewsletterForm from './NewsletterForm.vue';
-import MenuWithIcons from './MenuWithIcons.vue';
+import SiteMenu from './SiteMenu.vue';
 import SocialIcons from './SocialIcons.vue';
 
 export default {
   name: 'PageFooter',
-  components: { MenuWithIcons, NewsletterForm, SocialIcons },
+  components: { SiteMenu, NewsletterForm, SocialIcons },
 };
 </script>
 
 <style scoped>
 footer {
-  padding-top: 4%;
+  padding-top: 1%;
   background: var(--q-secondary);
 }
 

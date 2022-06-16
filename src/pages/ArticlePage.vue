@@ -1,6 +1,6 @@
 <template>
   <q-page class="bg-secondary">
-    <div class="content row q-pa-none" style="padding-top: 5%">
+    <div class="content row q-pa-none" style="padding-top: 1%">
       <div class="col-8 bg-secondary">
         <div class="q-pa-md" style="border-radius: 1em">
           <h4 class="text-accent" style="font-size: 1.5em;
