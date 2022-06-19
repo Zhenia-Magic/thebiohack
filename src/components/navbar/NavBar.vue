@@ -4,16 +4,25 @@
           <q-btn-dropdown dropdown-icon="menu" flat round dense
           class="sm-hide md-hide lg-hide xl-hide">
             <q-list bordered separator class="bg-accent text-white">
-              <q-item clickable v-close-popup v-for="option in options" :key="option.value">
+              <q-item
+                clickable
+                v-close-popup
+                v-for="option in options"
+                :key="option.value"
+                :active="modelValue === option.value"
+                @click="modelValue = option.value; this.$router.push(option.attrs.to)"
+                active-class="my-menu-link">
                 <q-item-section>
-                  <q-item-label>{{ option.label }}</q-item-label>
+                  <q-item-label>
+                      {{ option.label }}
+                  </q-item-label>
                 </q-item-section>
               </q-item>
             </q-list>
           </q-btn-dropdown>
           <q-space />
           <q-btn-toggle
-            v-model="model"
+            v-model="modelValue"
             no-caps
             flat no-wrap stretch class="ellipsis xs-hide text-bold"
             toggle-color="dark"
@@ -31,13 +40,14 @@ import { ref } from 'vue';
 
 export default {
   setup() {
+    const modelValue = ref('articles');
     return {
-      model: ref('tutorials'),
+      modelValue,
       options: ref([
-        { label: 'Tutorials', value: 'tutorials' },
-        { label: 'Challenges', value: 'challenges' },
-        { label: 'Tech Devices', value: 'tech_devices' },
-        { label: 'Community', value: 'community' },
+        { label: 'Articles', value: 'articles', attrs: { to: '/' } },
+        { label: 'Challenges', value: 'challenges', attrs: { to: '/challenges' } },
+        { label: 'Tech Devices', value: 'tech_devices', attrs: { to: '/tech-devices' } },
+        { label: 'Community', value: 'community', attrs: { to: '/community' } },
       ]),
     };
   },
@@ -57,5 +67,9 @@ export default {
 .bottom-shadow {
   box-shadow: 0 4px 2px -3px gray;
 }
+
+.my-menu-link {
+  color: white;
+  background: #F2C037}
 
 </style>

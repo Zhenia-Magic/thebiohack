@@ -1,6 +1,8 @@
 <template>
   <div class="column justify-center items-center">
-    <h6>Follow Us</h6>
+    <section-header>
+      Follow Us
+    </section-header>
     <div class="row social-icons q-pb-md">
       <q-icon
         size="2em"
@@ -19,8 +21,11 @@
 </template>
 
 <script>
+import SectionHeader from 'components/UI/SectionHeader.vue';
+
 export default {
   name: 'SocialIcons',
+  components: { SectionHeader },
 };
 </script>
 

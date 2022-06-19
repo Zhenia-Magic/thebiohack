@@ -1,7 +1,5 @@
-import MyButton from 'components/UI/MyButton.vue';
-import MyInput from 'components/UI/MyInput.vue';
+import SectionHeader from 'components/UI/SectionHeader.vue';
 
 export default [
-  MyButton,
-  MyInput,
+  SectionHeader,
 ];

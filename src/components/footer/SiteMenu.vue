@@ -1,25 +1,30 @@
 <template>
   <div class="menu">
-    <h6>Resources</h6>
+    <section-header>
+      Resources
+    </section-header>
     <div class="flex column menu-items">
-      <p>Home</p>
-      <p>About</p>
-      <p>Contact Us</p>
-      <p>Terms of Use</p>
-      <p>Privacy Policy</p>
+      <p class="menu-item">Home</p>
+      <p class="menu-item">About</p>
+      <p class="menu-item">Contact Us</p>
+      <p class="menu-item">Terms of Use</p>
+      <p class="menu-item">Privacy Policy</p>
     </div>
   </div>
 </template>
 
 <script>
+import SectionHeader from 'components/UI/SectionHeader.vue';
 
 export default {
   name: 'SiteMenu',
+  components: { SectionHeader },
 };
 </script>
 
 <style scoped>
-h6 {
+
+.menu-header {
   color: var(--q-dark);
   font-weight: 900;
   margin: 0 auto 1em auto;
@@ -29,13 +34,13 @@ h6 {
   padding: 2rem 0 2rem 0;
 }
 
-p {
+.menu-item {
   margin: 0;
   color: var(--q-dark);
-  max-width: 30%;
+  max-width: 72%;
 }
 
-p:hover {
+.menu-item:hover {
   font-weight: 600;
 }
 

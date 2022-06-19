@@ -2,7 +2,9 @@
   <q-form
     @submit="onSubmit"
     class="column form">
-    <h6>Subscribe to Newsletter</h6>
+    <section-header>
+      Subscribe to Newsletter
+    </section-header>
     <q-input
       bg-color="white"
       color="dark"
@@ -43,9 +45,11 @@
 
 <script>
 import { ref } from 'vue';
+import SectionHeader from 'components/UI/SectionHeader.vue';
 
 export default {
   name: 'NewsletterForm',
+  components: { SectionHeader },
   setup() {
     const email = ref('');
     const firstName = ref('');
@@ -79,12 +83,6 @@ export default {
 .form {
   padding: 2rem 0 2rem 0;
   flex-basis: 23rem;
-}
-
-h6 {
-  color: var(--q-dark);
-  font-weight: 900;
-  margin: 0 auto 1em auto;
 }
 
 </style>
