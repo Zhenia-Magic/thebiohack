@@ -1,5 +1,5 @@
 <template>
-  <div class="column justify-center items-center">
+  <div class="column justify-center items-center padding-2rem">
     <section-header>
       Follow Us
     </section-header>
@@ -48,6 +48,10 @@ h6 {
   color: var(--q-dark);
   font-weight: 900;
   margin: 0 auto 1em auto;
+}
+
+.padding-2rem {
+  padding: 2rem 0 0 0;
 }
 
 </style>

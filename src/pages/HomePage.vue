@@ -1,79 +1,64 @@
 <template>
   <q-page class="bg-secondary">
-    <div class="content row q-pa-none" style="padding-top: 1%">
-      <div class="col-8 bg-secondary">
-        <div class="q-pa-md" style="border-radius: 1em">
-          <h4 class="text-accent" style="font-size: 1.5em;
-          font-weight: bold; text-align: center">
-            {{ $route.params.articleID }}
-          </h4>
-
-        </div>
+    <div class="flex row justify-center q-pt-md"
+         v-if="$q.screen.gt.sm">
+      <div class="col-7 bg-secondary">
+        <articles-list
+          :selectedSort="selectedSort"
+        />
       </div>
-      <div class="col-4 bg-secondary">
-        <div class=" q-ma-md q-pa-md" style="border-radius: 1em">
-          <h5 class="text-accent" style="font-size: 1.5em;
-          font-weight: bold; text-align: center">
-            Contents
-          </h5>
-          <q-list class>
-            <q-item clickable v-ripple class="content-item">
-              <q-item-section>Sleep</q-item-section>
-            </q-item>
-
-            <q-item clickable v-ripple class="content-item">
-              <q-item-section>
-                <q-item-label>Nutrition</q-item-label>
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable v-ripple class="content-item">
-              <q-item-section>
-                <q-item-label>Work</q-item-label>
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable v-ripple class="content-item">
-              <q-item-section>
-                <q-item-label>Exercise</q-item-label>
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable v-ripple class="content-item">
-              <q-item-section>
-                <q-item-label>Brain</q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </div>
+      <div class="col-3 bg-secondary">
+      <topics-list
+        @updateSelectedSort="updateSelectedSort"
+        :options="sortOptions"
+        orientation="vertical"
+      />
       </div>
+    </div>
+
+    <div class="flex column q-pa-none" v-else>
+      <topics-list
+        @updateSelectedSort="updateSelectedSort"
+        :options="sortOptions"
+        orientation="horizontal"
+      />
+      <articles-list
+        :selectedSort="selectedSort"
+      />
     </div>
   </q-page>
 </template>
 
 <script>
+import TopicsList from 'components/articles/TopicsList.vue';
+import ArticlesList from 'components/articles/ArticlesList.vue';
+import { ref } from "vue";
+
 export default {
   name: 'HomePage.vue',
+  components: { ArticlesList, TopicsList },
+  setup() {
+    const selectedSort = ref('');
+    const sortOptions = ref([
+      { value: '', name: 'All' },
+      { value: 'sleep', name: 'Sleep' },
+      { value: 'nutrition', name: 'Nutrition' },
+      { value: 'work', name: 'Work' },
+      { value: 'exercise', name: 'Exercise' },
+      { value: 'brain', name: 'Brain' },
+    ]);
+    const updateSelectedSort = (option) => {
+      selectedSort.value = option;
+    };
+    return {
+      selectedSort,
+      sortOptions,
+      updateSelectedSort,
+    };
+  },
 };
 </script>
 
 <style scoped>
 
-.content-item {
-  background-color: #904c77ff;
-  padding: 1em;
-  margin: 1em 0em;
-  border-radius: 1em;
-  text-align: center;
-  color: white;
-  font-weight: bold;
-  font-size: 1.5em;
-  max-width: 10em;
-}
-
-.article {
-  margin: 0em 3em;
-  font-size: 1rem;
-  text-align: justify;
-}
 </style>

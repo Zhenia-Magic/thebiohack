@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'TechDevicesPage.vue',
+  name: 'CoursePage.vue',
 };
 </script>
 

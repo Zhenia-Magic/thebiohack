@@ -5,13 +5,14 @@
           class="sm-hide md-hide lg-hide xl-hide">
             <q-list bordered separator class="bg-accent text-white">
               <q-item
+                class="item"
                 clickable
                 v-close-popup
                 v-for="option in options"
                 :key="option.value"
-                :active="modelValue === option.value"
-                @click="modelValue = option.value; this.$router.push(option.attrs.to)"
-                active-class="my-menu-link">
+                :active="store.websiteSection === option.value"
+                @click="redirectPage(option)"
+                active-class="active-item">
                 <q-item-section>
                   <q-item-label>
                       {{ option.label }}
@@ -22,13 +23,13 @@
           </q-btn-dropdown>
           <q-space />
           <q-btn-toggle
-            v-model="modelValue"
+            v-model="store.websiteSection"
             no-caps
             flat no-wrap stretch class="ellipsis xs-hide text-bold"
             toggle-color="dark"
             :options="options"
             padding="0.7em 2em"
-            size="1.5em"
+            size="22px"
           />
           <q-space />
         </q-toolbar>
@@ -36,17 +37,29 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
+import { useRouter } from 'vue-router';
+import { useMainStore } from 'stores/main-store';
 
 export default {
   setup() {
-    const modelValue = ref('articles');
+    const router = useRouter();
+    const store = useMainStore();
+    store.setWebsiteSection(router.currentRoute.value.path.slice(1));
+
+    watch(() => router.currentRoute.value.path, () => {
+      store.setWebsiteSection(router.currentRoute.value.path.slice(1));
+    }, { deep: true, immediate: true });
     return {
-      modelValue,
+      store,
+      redirectPage: (option) => {
+        store.setWebsiteSection(option.value);
+        router.push(option.attrs.to);
+      },
       options: ref([
-        { label: 'Articles', value: 'articles', attrs: { to: '/' } },
+        { label: 'Articles', value: 'articles', attrs: { to: '/articles' } },
+        { label: 'Course', value: 'course', attrs: { to: '/course' } },
         { label: 'Challenges', value: 'challenges', attrs: { to: '/challenges' } },
-        { label: 'Tech Devices', value: 'tech_devices', attrs: { to: '/tech-devices' } },
         { label: 'Community', value: 'community', attrs: { to: '/community' } },
       ]),
     };
@@ -68,8 +81,12 @@ export default {
   box-shadow: 0 4px 2px -3px gray;
 }
 
-.my-menu-link {
-  color: white;
-  background: #F2C037}
+.active-item {
+  color: var(--q-dark);
+  background: var(--q-primary)
+}
 
+.item {
+  font-weight: 900;
+}
 </style>

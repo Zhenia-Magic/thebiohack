@@ -12,9 +12,5 @@ import { createPinia } from 'pinia';
  */
 
 export default store((/* { ssrContext } */) => {
-
-  // You can add Pinia plugins here
-  // pinia.use(SomePiniaPlugin)
-
   return createPinia();
 });

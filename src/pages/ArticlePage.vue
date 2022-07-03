@@ -41,43 +41,6 @@
           </div>
         </div>
       </div>
-      <div class="col-4 bg-secondary">
-        <div class=" q-ma-md q-pa-md" style="border-radius: 1em">
-          <h5 class="text-accent" style="font-size: 1.5em;
-          font-weight: bold; text-align: center">
-            Contents
-          </h5>
-          <q-list class>
-            <q-item clickable v-ripple class="content-item">
-              <q-item-section>Sleep</q-item-section>
-            </q-item>
-
-            <q-item clickable v-ripple class="content-item">
-              <q-item-section>
-                <q-item-label>Nutrition</q-item-label>
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable v-ripple class="content-item">
-              <q-item-section>
-                <q-item-label>Work</q-item-label>
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable v-ripple class="content-item">
-              <q-item-section>
-                <q-item-label>Exercise</q-item-label>
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable v-ripple class="content-item">
-              <q-item-section>
-                <q-item-label>Brain</q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </div>
-      </div>
     </div>
   </q-page>
 </template>

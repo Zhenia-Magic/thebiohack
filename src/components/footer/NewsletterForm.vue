@@ -81,7 +81,7 @@ export default {
 }
 
 .form {
-  padding: 2rem 0 2rem 0;
+  padding: 2rem 0.5rem 2rem 0.5rem;
   flex-basis: 23rem;
 }
 

@@ -15,5 +15,7 @@ export default {
   color: var(--q-dark);
   font-weight: 900;
   margin: 0 auto 1em auto;
+  font-size: 22px;
 }
+
 </style>

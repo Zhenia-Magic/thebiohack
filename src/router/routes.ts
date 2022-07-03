@@ -3,7 +3,7 @@ import MainLayout from 'src/layouts/MainLayout.vue';
 import ArticlePage from 'src/pages/ArticlePage.vue';
 import ChallengesPage from 'src/pages/ChallengesPage.vue';
 import CommunityPage from 'src/pages/CommunityPage.vue';
-import TechDevicesPage from 'src/pages/TechDevicesPage.vue';
+import CoursePage from 'src/pages/CoursePage.vue';
 import HomePage from 'src/pages/HomePage.vue';
 
 const routes: RouteRecordRaw[] = [
@@ -12,12 +12,12 @@ const routes: RouteRecordRaw[] = [
     component: MainLayout,
     children: [
       {
-        path: '',
+        path: 'articles',
         component: HomePage,
-        children: [{
-          path: 'articles/:articleID',
-          component: ArticlePage,
-        }],
+      },
+      {
+        path: 'articles/:articleID',
+        component: ArticlePage,
       },
       {
         path: 'challenges',
@@ -28,8 +28,8 @@ const routes: RouteRecordRaw[] = [
         component: CommunityPage,
       },
       {
-        path: 'tech-devices',
-        component: TechDevicesPage,
+        path: 'course',
+        component: CoursePage,
       },
     ],
   },
