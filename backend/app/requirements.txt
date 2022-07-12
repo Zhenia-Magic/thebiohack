@@ -1,0 +1,8 @@
+fastapi==0.78.0
+uvicorn==0.12.2
+python-dotenv==0.20.0
+sqlalchemy==1.4.39
+psycopg2==2.9.3
+sqladmin==0.1.11
+alembic==1.8.0
+pytest==7.1.2
