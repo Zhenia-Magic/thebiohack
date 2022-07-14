@@ -10,8 +10,8 @@
           v-ripple
           class="content-item"
           v-for="option in options"
-          :key="option.value"
-          @click="$emit('updateSelectedSort', option.value)">
+          :key="option.id"
+          @click="$emit('updateSelectedSort', option.id)">
         <q-item-section>{{ option.name }}</q-item-section>
       </q-item>
     </q-list>
@@ -28,7 +28,7 @@
         v-ripple
         class="content-item"
         v-for="option in options"
-        :key="option.value"
+        :key="option.id"
         @click="$emit('updateSelectedSort', option.value)">
         <q-item-section>{{ option.name }}</q-item-section>
       </q-item>
