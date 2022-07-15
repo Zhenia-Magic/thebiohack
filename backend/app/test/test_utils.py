@@ -8,9 +8,9 @@ from sqlalchemy.future import Engine
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.sql.schema import Table
 
-from app.core.db.database import Base, get_db
-from app.core.db.models import Tag
-from app.main import app
+from application.core import Base, get_db
+from application.core import Tag
+from application.main import app
 
 
 def insert_initial_tags(target: Table, connection: Connection, **kwargs):

@@ -1,6 +1,6 @@
 from sqladmin import ModelAdmin
 
-from app.core.db.models import User, Tag, Post, Question, Challenge, QuestionChoice
+from application.core.db.models import User, Tag, Post, Question, Challenge, QuestionChoice
 
 
 class UserAdmin(ModelAdmin, model=User):

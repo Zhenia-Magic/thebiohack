@@ -3,11 +3,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqladmin import Admin
 
-from app.core.config import settings
-from app.core.db.admin_models import UserAdmin, TagAdmin, PostAdmin, QuestionAdmin, QuestionChoiceAdmin, \
+from application.core.config import settings
+from application.core.db.admin_models import UserAdmin, TagAdmin, PostAdmin, QuestionAdmin, QuestionChoiceAdmin, \
   ChallengeAdmin
-from app.core.db.database import engine
-from app.routes.api import api_router
+from application.core.db.database import engine
+from application.routes.api import api_router
 
 
 def get_application():
@@ -38,3 +38,5 @@ async def root():
 
 app.include_router(api_router)
 
+if __name__ == "__main__":
+    uvicorn.run("application.main:app", host='0.0.0.0', port=8000, reload=True)

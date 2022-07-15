@@ -2,8 +2,8 @@ from typing import List
 
 from sqlalchemy.orm import Session
 
-from app.core.db.models import User, Tag, Post, Question, Challenge
-from app.core.schema.schemas import TagModel, PostModel, QuestionModel, ChallengeModel, QuestionChoiceModel, UserModel
+from application.core.db.models import User, Tag, Post, Question, Challenge
+from application.core.schema.schemas import TagModel, PostModel, QuestionModel, ChallengeModel, QuestionChoiceModel, UserModel
 
 
 def get_posts_written_by_user(db_session: Session, user_id: int) -> List[PostModel]:

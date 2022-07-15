@@ -1,38 +1,50 @@
-version: "3.8"
+version: '3.9'
 
 services:
-  app:
-    build:
-        context: ./backend/app/
-        dockerfile: Dockerfile
-    env_file:
-      - ./backend/app/app/core/.env
-    volumes:
-        - ./backend/:/backend/
-    ports:
-      - "8000:8000"
-    command: uvicorn app.app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
-    depends_on:
-        - db
+    db:
+        image: postgres:14
+        volumes:
+            - postgres_data:/var/lib/postgresql/data/
+        env_file:
+            - ./backend/app/application/core/.env
+        ports:
+            - "5432:5432"
+    web:
+        build:
+            context: ./backend/app
+            dockerfile: Dockerfile
+        volumes:
+            - ./backend/app/:/app/
+        command: bash -c "alembic upgrade head && uvicorn application.main:app --reload --workers 1 --host 0.0.0.0 --port 8000"
+        env_file:
+            - ./backend/app/application/core/.env
+        ports:
+            - "8000:8000"
+        depends_on:
+            - db
 
-  db:
-    image: postgres:14-alpine
-    env_file:
-      - ./backend/app/app/core/.env
-    volumes:
-        - postgres_data:/var/lib/postgresql/data/
-    ports:
-        - '5432:5432'
 
-  quasar:
-    build:
-        context: .
-        target: 'develop-stage'
-    ports:
-        - '8080:8080'
-    volumes:
-        - '.:/thebiohack'
-    command: /bin/sh -c "yarn && quasar dev"
+    pgadmin:
+        container_name: pgadmin
+        image: dpage/pgadmin4
+        environment:
+            - PGADMIN_DEFAULT_EMAIL=pgadmin4@pgadmin.org
+            - PGADMIN_DEFAULT_PASSWORD=admin
+        ports:
+            - "5050:80"
+        depends_on:
+            - db
+
+    quasar:
+        build:
+            context: .
+            target: 'develop-stage'
+        ports:
+            - '8080:8080'
+        volumes:
+            - '.:/thebiohack'
+        command: /bin/sh -c "yarn && quasar dev"
+
 
 volumes:
     postgres_data:

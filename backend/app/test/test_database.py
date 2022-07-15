@@ -1,10 +1,9 @@
 import pytest
 from sqlalchemy.orm import Session
 
-from app.core.db.db_api_utils import get_all_posts, get_posts_by_tag
-from app.core.db.models import Tag, Post, TagPost
-from app.core.schema.schemas import TagModel
-from test.test_utils import db_session, db_engine
+from application.core.db.db_api_utils import get_all_posts, get_posts_by_tag
+from application.core import Tag, Post, TagPost
+from application.core.schema.schemas import TagModel
 
 
 def add_posts(db_session: Session):

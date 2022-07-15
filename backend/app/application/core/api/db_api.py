@@ -2,9 +2,9 @@ from typing import List
 
 from fastapi import Depends, APIRouter
 
-from app.core.db.database import get_db
-from app.core.db.db_api_utils import create_tag, get_all_tags
-from app.core.schema.schemas import TagModel
+from application.core.db.database import get_db
+from application.core.db.db_api_utils import create_tag, get_all_tags
+from application.core.schema.schemas import TagModel
 
 router = APIRouter()
 
