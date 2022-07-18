@@ -1,0 +1,28 @@
+{
+    "tags": [
+        {
+            "tag_id": 1,
+            "name": "Sleep"
+        },
+        {
+            "tag_id": 2,
+            "name": "Nutrition"
+        },
+        {
+            "tag_id": 3,
+            "name": "Exercise"
+        },
+        {
+            "tag_id": 4,
+            "name": "Work"
+        },
+        {
+            "tag_id": 5,
+            "name": "Mind"
+        },
+        {
+            "tag_id": 6,
+            "name": "Travel"
+        }
+    ]
+}

@@ -7,6 +7,9 @@ Create Date: 2022-07-08 22:02:21.441590
 """
 from alembic import op
 import sqlalchemy as sa
+from application.core.db.models import Post, Question, QuestionChoice, Tag
+from application.core.db.database import SessionLocal
+from application.data.initial_data_preparation import prepare_data
 
 
 # revision identifiers, used by Alembic.
@@ -14,6 +17,22 @@ revision = '819ac0acface'
 down_revision = None
 branch_labels = None
 depends_on = None
+
+"""res = prepare_data()
+session = SessionLocal()
+for post_data in res.posts:
+    post = Post(title=post_data[0].title,
+                html_content=post_data[0].html_content,
+                created_at=post_data[0].created_at,
+                in_course=post_data[0].in_course,
+                order_in_course=post_data[0].order_in_course)
+    tags = [tag.name for tag in post_data[1]]
+
+    print(tags, res.tags, [tag.name for tag in session.query(Tag).all()])
+    l = session.query(Tag).filter(Tag.name.in_(tags)).all()
+    print([tag.name for tag in l])
+    print(session.query(Tag).filter(Tag.name.in_(tags)).all())
+    post.tags = list(session.query(Tag).filter(Tag.name.in_(tags)).all())"""
 
 
 def upgrade() -> None:
@@ -96,16 +115,10 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('question_choice_id')
     )
     op.create_index(op.f('ix_question_choices_question_id'), 'question_choices', ['question_id'], unique=False)
+    res = prepare_data()
+    print(res.tags)
+    op.bulk_insert(tags_table, res.tags)
 
-    op.bulk_insert(tags_table,
-                   [
-                     {"tag_id": 1, "name": "Sleep"},
-                     {"tag_id": 2, "name": "Nutrition"},
-                     {"tag_id": 3, "name": "Exercise"},
-                     {"tag_id": 4, "name": "Work"},
-                     {"tag_id": 5, "name": "Brain"}
-                   ]
-                   )
     # ### end Alembic commands ###
 
 

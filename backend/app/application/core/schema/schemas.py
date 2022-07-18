@@ -20,7 +20,7 @@ class UserModel(BaseModel):
 
 class PostModel(BaseModel):
     post_id: Optional[int]
-    user_id: Optional[int]
+    user: Optional[UserModel]
     title: str
     html_content: str
     created_at: Optional[datetime]
@@ -41,7 +41,7 @@ class TagModel(BaseModel):
 
 class ChallengeModel(BaseModel):
     challenge_id: Optional[int]
-    tag_id: Optional[int]
+    tag: TagModel
     name: str
     num_days: int
     description: str
@@ -52,7 +52,7 @@ class ChallengeModel(BaseModel):
 
 class QuestionModel(BaseModel):
     question_id: Optional[int]
-    post_id: int
+    post: PostModel
     name: str
     prompt: str
 
@@ -62,7 +62,8 @@ class QuestionModel(BaseModel):
 
 class QuestionChoiceModel(BaseModel):
     question_choice_id: Optional[int]
-    question_id: int
+    question: QuestionModel
     text: str
     correct: bool
     explanation: Optional[str]
+

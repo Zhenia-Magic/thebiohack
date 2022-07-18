@@ -1,0 +1,12 @@
+{
+    "questions": [
+        {
+            "name": "Question 1",
+            "prompt": "Which color is the sun?"
+        },
+        {
+            "name": "Question 2",
+            "prompt": "Which color is the sun?"
+        }
+    ]
+}
