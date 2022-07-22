@@ -3,19 +3,17 @@ version: '3.9'
 services:
     db:
         image: postgres:14
-        volumes:
-            - postgres_data:/var/lib/postgresql/data/
         env_file:
             - ./backend/app/application/core/.env
         ports:
-            - "5432:5432"
+            - "5433:5432"
     web:
         build:
             context: ./backend/app
             dockerfile: Dockerfile
         volumes:
             - ./backend/app/:/app/
-        command: bash -c "alembic upgrade head && uvicorn application.main:app --reload --workers 1 --host 0.0.0.0 --port 8000"
+        command: bash -c "alembic upgrade head && python /app/data_load.py && uvicorn application.main:app --host 0.0.0.0 --port 80"
         env_file:
             - ./backend/app/application/core/.env
         ports:
@@ -45,6 +43,3 @@ services:
             - '.:/thebiohack'
         command: /bin/sh -c "yarn && quasar dev"
 
-
-volumes:
-    postgres_data:

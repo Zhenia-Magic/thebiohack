@@ -1,4 +1,3 @@
-import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqladmin import Admin
@@ -37,6 +36,3 @@ async def root():
     return {"message": "Hello World"}
 
 app.include_router(api_router)
-
-if __name__ == "__main__":
-    uvicorn.run("application.main:app", host='0.0.0.0', port=8000, reload=True)
