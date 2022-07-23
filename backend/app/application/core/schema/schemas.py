@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List
 
 from pydantic import BaseModel
 
@@ -18,9 +18,18 @@ class UserModel(BaseModel):
         orm_mode = True
 
 
+class TagModel(BaseModel):
+    tag_id: Optional[int]
+    name: str
+
+    class Config:
+        orm_mode = True
+
+
 class PostModel(BaseModel):
     post_id: Optional[int]
     user: Optional[UserModel]
+    tags: Optional[List[TagModel]]
     title: str
     html_content: str
     created_at: Optional[datetime]
@@ -31,17 +40,9 @@ class PostModel(BaseModel):
         orm_mode = True
 
 
-class TagModel(BaseModel):
-    tag_id: Optional[int]
-    name: str
-
-    class Config:
-        orm_mode = True
-
-
 class ChallengeModel(BaseModel):
     challenge_id: Optional[int]
-    tag: TagModel
+    tag: Optional[TagModel]
     name: str
     num_days: int
     description: str
